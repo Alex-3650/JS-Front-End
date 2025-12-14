@@ -3,8 +3,14 @@ document.addEventListener('DOMContentLoaded', solve);
 function solve() {
    const formEl= document.querySelector('#solutionCheck');
    const outputEl=document.querySelector('#check');
+   let sizeValue=document.querySelector('#size');
     let status='';
-    let size=3;
+    let size=sizeValue;
+    sizeValue.addEventListener('change',e=>{
+    
+    })
+
+
    formEl.addEventListener('submit',e=>{
       e.preventDefault();
       

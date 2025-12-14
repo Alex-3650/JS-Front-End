@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post</title>
+   <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    
+    <h1>Fetch API</h1>
+    <ul class="list"></ul>
+     <button class="get">Get data</button>
+     <button class="post">Post data</button>
+     <button class="put">Put data</button>
+     <ul>
+        <li id="Post"></li>
+     </ul>
+    <script>
+        const baseUrl='https://api.restful-api.dev/objects';
+       document.addEventListener('DOMContentLoaded',(e)=>{
+
+        document.querySelector('.get').addEventListener('click',(e)=>{
+
+            fetch(baseUrl)
+            .then(response=>response.json())
+            .then(result=>{
+               result.forEach(el => {
+               const list  =document.querySelector('.list');
+               list.append(Object.assign(document.createElement('li'),{textContent:el.name}))
+                
+               });
+            })
+            .catch(error=>console.error(error));
+        })
+
+         document.querySelector('.post').addEventListener('click',(e)=>{
+            const data={
+                        "name": "Apple MacBook Pro 16",
+                        "data": {
+                            "year": 2019,
+                            "price": 1849.99,
+                            "CPU model": "Intel Core i9",
+                            "Hard disk size": "1 TB"
+                             }
+                        }
+
+            fetch(baseUrl,{
+               method:'POST',
+               headers : {"content-type": "application/json"},
+               body:JSON.stringify(data)
+            })
+            .then(response=>response.json())
+            .then(result=>{
+                document.querySelector('#Post').textContent=result.name;
+            })
+            .catch(error=>console.error(error));
+            });
+
+
+
+            document.querySelector('.put').addEventListener('click',asyncFunc)
+           async function asyncFunc(){
+                const data={
+                    "name": "Apple MacBook Pro 16",
+                    "data": {
+                               "year": 2019,
+                               "price": 2049.99,
+                               "CPU model": "Intel Core i9",
+                               "Hard disk size": "1 TB",
+                               "color": "silver"
+                        }
+                    }
+            try{
+                 const rawResult= await fetch(baseUrl+'/7',data);
+             const result= await rawResult.json();
+             console.log(result);
+              
+            }catch(error){
+                console.log(error);
+            }
+
+            }
+        
+
+       });
+
+     
+       
+    </script>
+</body>
+
+</html>

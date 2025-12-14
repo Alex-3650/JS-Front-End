@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    padding: 3em 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+}
+
+h1 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: 1px;
+}
+
+.list {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    min-width: 350px;
+    max-width: 500px;
+    min-height: 200px;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    list-style: none;
+}
+
+.list:empty::before {
+    content: 'No data loaded yet...';
+    color: #999;
+    font-style: italic;
+    display: block;
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.list li {
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border-left: 4px solid #667eea;
+    font-size: 1rem;
+}
+
+.list li:last-child {
+    margin-bottom: 0;
+}
+
+.list li:hover {
+    transform: translateX(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+button {
+    font-size: 1.1rem;
+    padding: 1.2em 2.5em;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 50px;
+    background: white;
+    color: #667eea;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+button.get {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+button.get:hover {
+    background: white;
+    color: #667eea;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .list {
+        min-width: 280px;
+        padding: 1.5rem;
+    }
+    
+    button {
+        font-size: 1rem;
+        padding: 1em 2em;
+        width: 100%;
+        max-width: 280px;
+    }
+}
